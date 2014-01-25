@@ -41,4 +41,10 @@ describe User do
       end
     end
   end
+
+  describe 'methods' do
+    it 'guest?' do
+      expect { user.save }.to change{ user.guest? }.from(true).to(false)
+    end
+  end
 end
