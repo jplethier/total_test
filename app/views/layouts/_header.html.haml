@@ -1,3 +1,6 @@
 .nav
   .nav-wrapper
-    = link_to('Logout', destroy_user_session_path, method: :delete)
+    .user-info
+      = current_user.email
+      |
+      = link_to('Logout', destroy_user_session_path, method: :delete)

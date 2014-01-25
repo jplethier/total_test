@@ -7,7 +7,15 @@ body {
 }
 
 article {
+  margin: 0 auto;
+  min-height: 300px;
   width: $site-width;
+}
+
+footer {
+  background-color: $gray;
+  height: 50px;
+  width: 100%;
 }
 
 .box {
