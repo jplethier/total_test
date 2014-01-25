@@ -1,7 +1,13 @@
+$site-width: 1024px;
+
 body {
   background-color: $beige;
   font-family: Arial;
   margin: 0;
+}
+
+article {
+  width: $site-width;
 }
 
 .box {
