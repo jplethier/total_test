@@ -15,7 +15,14 @@
 %body
   = flash_messages
 
-  = yield
+  - if user_signed_in?
+    = render 'layouts/header'
+
+  %article{ id: controller_name }
+    = yield
+
+  - if user_signed_in?
+    = render 'layouts/footer'
 
   = javascript_include_tag :application
   = yield :javascript
