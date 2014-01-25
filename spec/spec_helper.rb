@@ -18,9 +18,5 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.order = 'random'
 
-  config.before(:suite) do
-    I18n.locale = 'pt-BR'
-  end
-
   config.include LoginHelper, type: :feature
 end
