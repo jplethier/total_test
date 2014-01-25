@@ -31,6 +31,14 @@ describe User do
       it 'has to be equal to confirmation' do
         expect { user.password_confirmation = 'different' }.to change{ user.valid? }.from(true).to(false)
       end
+
+      it 'has to have at least 6 characters' do
+        expect { user.password = '12345' }.to change{ user.valid? }.from(true).to(false)
+      end
+
+      it 'has to have at maximum 128 characters' do
+        expect { user.password = '1'*129 }.to change{ user.valid? }.from(true).to(false)
+      end
     end
   end
 end
