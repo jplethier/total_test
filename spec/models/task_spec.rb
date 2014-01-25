@@ -20,4 +20,11 @@ describe Task do
       expect { task.user = nil }.to change{ task.valid? }.from(true).to(false)
     end
   end
+
+  describe 'methods' do
+    it 'is_done?' do
+      task.done = false
+      expect { task.done = true }.to change{ task.is_done? }.from(false).to(true)
+    end
+  end
 end
