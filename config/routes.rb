@@ -1,5 +1,7 @@
 ToptalTest::Application.routes.draw do
-  use_doorkeeper
+  scope 'api' do
+    use_doorkeeper
+  end
 
   devise_for :users
 

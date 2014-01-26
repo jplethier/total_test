@@ -52,6 +52,7 @@ group :development, :test do
   gem 'letter_opener'
   gem 'pry-nav'
   gem "rspec-rails"
+  gem 'httpi'
 end
 
 group :test do
