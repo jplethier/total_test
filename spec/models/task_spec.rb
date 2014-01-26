@@ -48,5 +48,15 @@ describe Task do
         Task.order_by('name').all.should == [task, task2, task3]
       end
     end
+
+    it 'done!' do
+      task.done = false
+      expect { task.done! }.to change{ task.done }.from(false).to(true)
+    end
+
+    it 'undone!' do
+      task.done = true
+      expect { task.undone! }.to change{ task.done }.from(true).to(false)
+    end
   end
 end

@@ -5,6 +5,21 @@ ul.tasks {
   padding: 0;
   width: 690px;
 
+  li.done {
+    color: $gray-light;
+    text-decoration: line-through;
+
+    a.check {
+      display: none!important;
+    }
+  }
+
+  li.done:hover {
+    a.uncheck {
+      display: inline;
+    }
+  }
+
   li {
     background-color: $white;
     border: 1px solid $gray-light;
@@ -19,12 +34,14 @@ ul.tasks {
       display: none;
     }
 
-    a.edit, a.destroy {
+    a.edit, a.destroy, a.check, a.uncheck {
       display: none;
+      font-size: 18px;
       position: absolute;
     }
 
     a.edit {
+      color: $gray;
       right: 25px;
       top: 6px;
     }
@@ -32,6 +49,19 @@ ul.tasks {
     a.destroy {
       right: 5px;
       top: 5px;
+    }
+
+    a.check {
+      color: $green;
+    }
+
+    a.uncheck, a.check {
+      right: 50px;
+      top: 6px;
+    }
+
+    a.uncheck {
+      color: $orange;
     }
 
     a:hover {
@@ -58,7 +88,7 @@ ul.tasks {
   }
 
   li:hover {
-    a.edit, a.destroy {
+    a.edit, a.destroy, a.check {
       display: inline;
     }
   }

@@ -40,6 +40,16 @@ class TasksController < ApplicationController
     end
   end
 
+  def done
+    @task.done!
+    flash.now[:notice] = 'Task completed'
+  end
+
+  def undone
+    @task.undone!
+    flash.now[:notice] = 'Task opened'
+  end
+
   private
 
   def task_params

@@ -19,4 +19,14 @@ class Task < ActiveRecord::Base
       order('due_date')
     end
   end
+
+  def done!
+    self.done = true
+    self.save
+  end
+
+  def undone!
+    self.done = false
+    self.save
+  end
 end

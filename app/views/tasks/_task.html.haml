@@ -1,4 +1,6 @@
-%li{ id: "task-#{task.id}" }
+%li{ id: "task-#{task.id}", class: task.is_done? ? 'done' : '' }
   .task_form= render 'task_form', task: task
-  = link_to '', 'javascript:;', remote: true, class: 'edit fa fa-edit'
-  = link_to '', "/tasks/#{task.id}", method: :delete, remote: true, class: 'destroy fa fa-times'
+  = link_to '', done_task_path(task), method: :post, remote: true, class: 'check fa fa-check-square-o', title: 'Complete'
+  = link_to '', undone_task_path(task), method: :post, remote: true, class: 'uncheck fa fa-undo', title: 'Open'
+  = link_to '', 'javascript:;', remote: true, class: 'edit fa fa-edit', title: 'Edit'
+  = link_to '', "/tasks/#{task.id}", method: :delete, remote: true, class: 'destroy fa fa-times', title: 'Remove'

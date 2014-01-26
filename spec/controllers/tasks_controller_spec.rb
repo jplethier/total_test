@@ -135,4 +135,32 @@ describe TasksController do
       xhr :delete, :destroy, { id: 1 }
     end
   end
+
+  describe 'done' do
+    before { Task.stub(find: task) }
+
+    it 'renders done' do
+      xhr :post, :done, { id: 1 }
+      expect(response).to render_template :done
+    end
+
+    it 'completes the task' do
+      expect(task).to receive :done!
+      xhr :post, :done, { id: 1 }
+    end
+  end
+
+  describe 'undone' do
+    before { Task.stub(find: task) }
+
+    it 'renders undone' do
+      xhr :post, :undone, { id: 1 }
+      expect(response).to render_template :undone
+    end
+
+    it 'opens the task' do
+      expect(task).to receive :undone!
+      xhr :post, :undone, { id: 1 }
+    end
+  end
 end
