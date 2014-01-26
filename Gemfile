@@ -38,6 +38,9 @@ gem 'devise', '>= 3.1.0'
 # Authorization
 gem 'cancan'
 
+# api authentication
+gem 'doorkeeper'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   # gem 'sdoc', require: false
