@@ -87,6 +87,37 @@ describe TasksController do
     end
   end
 
+  describe 'update' do
+    let(:params) { { id: 1, task: { name: 'f_task', due_date: '2017-12-31', priority: 1 } } }
+
+    before do
+      Task.stub(find: task)
+    end
+
+    context 'successfully' do
+      before { task.stub(update_attributes: true) }
+
+      it 'renders task_updated' do
+        xhr :put, :update, params
+        expect(response).to render_template :task_updated
+      end
+
+      it 'updates the task' do
+        expect(task).to receive :update_attributes
+        xhr :put, :update, params
+      end
+    end
+
+    context 'unsuccessfully' do
+      before { task.stub(update_attributes: false) }
+
+      it 'renders task_error' do
+        xhr :put, :update, params
+        expect(response).to render_template :task_error
+      end
+    end
+  end
+
   describe 'destroy' do
 
     before do
