@@ -78,4 +78,8 @@ form {
   button.confirm, input[type='submit'].confirm {
     @include button(shiny, $green)
   }
+
+  a.cancel {
+    @include button(shiny, $orange)
+  }
 }

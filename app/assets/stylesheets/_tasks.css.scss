@@ -15,20 +15,50 @@ ul.tasks {
     padding: 5px;
     position: relative;
 
-    a.destroy {
+    .input {
+      display: none;
+    }
+
+    a.edit, a.destroy {
       display: none;
       position: absolute;
+    }
+
+    a.edit {
+      right: 25px;
+      top: 6px;
+    }
+
+    a.destroy {
       right: 5px;
       top: 5px;
     }
 
-    a.destroy:hover {
+    a:hover {
       text-decoration: none;
+    }
+
+    a.cancel {
+      display: block;
+    }
+
+    div.cancel, div.submit {
+      bottom: 5px;
+      position: absolute;
+    }
+
+    div.cancel {
+      bottom: 7px;
+      right: 125px;
+    }
+
+    div.submit {
+      right: 15px;
     }
   }
 
   li:hover {
-    a.destroy {
+    a.edit, a.destroy {
       display: inline;
     }
   }

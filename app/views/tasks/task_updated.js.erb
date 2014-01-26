@@ -1,0 +1,2 @@
+<%= render 'shared/messages' %>
+$('ul.tasks li#task-<%= @task.id %> .task_form').html("<%= j render 'task_form', task: @task %>")

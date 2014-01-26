@@ -1,0 +1,16 @@
+= form_for task, remote: true, html: { id: "form-task-#{task.id}" } do |f|
+  %span.priority
+    Priority:
+    %span.label= task.priority
+    %span.input= f.select :priority, (1..10).to_a
+  %span.due_date
+    Due Date:
+    %span.label= l task.due_date
+    %span.input= f.text_field :due_date
+
+  %br
+
+  %span.label= task.name
+  %span.input= f.text_field :name
+  .submit.input= f.submit 'Confirm', class: 'confirm'
+  .cancel.input= link_to 'Cancel', 'javascript:;', class: 'cancel'

@@ -30,6 +30,16 @@ class TasksController < ApplicationController
     flash.now[:notice] = 'Task deleted'
   end
 
+  def update
+    if @task.update_attributes(task_params)
+      flash.now[:notice] = 'Task updated'
+      render :task_updated
+    else
+      flash.now[:error] = 'Could not update the task'
+      render :task_error
+    end
+  end
+
   private
 
   def task_params

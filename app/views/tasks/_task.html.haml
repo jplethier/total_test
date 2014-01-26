@@ -1,6 +1,4 @@
 %li{ id: "task-#{task.id}" }
-  %span.priority= "Priority: #{task.priority}"
-  %span.due_date= "Due Date: #{l task.due_date}"
-  %br
-  = task.name
+  .task_form= render 'task_form', task: task
+  = link_to '', 'javascript:;', remote: true, class: 'edit fa fa-edit'
   = link_to '', "/tasks/#{task.id}", method: :delete, remote: true, class: 'destroy fa fa-times'
