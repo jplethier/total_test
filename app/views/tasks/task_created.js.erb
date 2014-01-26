@@ -1,6 +1,2 @@
-$('.message').remove()
-$('body').prepend("<%= j flash_messages %>")
-$('body .message').click(function() {
-  $(this).fadeOut(500);
-});
+<%= render 'shared/messages' %>
 $('ul.tasks').prepend("<%= j render @task %>")

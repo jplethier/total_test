@@ -20,6 +20,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task_id = params[:id]
+    @task.destroy
+    flash.now[:notice] = 'Task deleted'
+  end
+
   private
 
   def task_params

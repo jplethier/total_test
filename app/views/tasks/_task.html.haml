@@ -1,1 +1,3 @@
-%li= task.name
+%li{ id: "task-#{task.id}" }
+  = task.name
+  = link_to 'Destroy', "/tasks/#{task.id}", method: :delete, remote: true

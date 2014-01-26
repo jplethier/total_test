@@ -53,4 +53,22 @@ describe TasksController do
       end
     end
   end
+
+  describe 'destroy' do
+
+    before do
+      Task.stub(find: task)
+      task.stub(destroy: task)
+    end
+
+    it 'renders destroy' do
+      xhr :delete, :destroy, { id: 1 }
+      expect(response).to render_template :destroy
+    end
+
+    it 'destroys the task' do
+      expect(task).to receive :destroy
+      xhr :delete, :destroy, { id: 1 }
+    end
+  end
 end
