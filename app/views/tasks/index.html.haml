@@ -1,5 +1,9 @@
 .left
   %h1 My Tasks
+  .filters
+    Order by:
+    = link_to 'Due Date', tasks_path + '?order_by=due_date', remote: true
+    = link_to 'Priority', tasks_path + '?order_by=priority', remote: true
   %ul.tasks
     = render @tasks
 

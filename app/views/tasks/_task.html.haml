@@ -1,3 +1,4 @@
 %li{ id: "task-#{task.id}" }
+  %span.priority= "Priority: #{task.priority}"
   = task.name
   = link_to 'Destroy', "/tasks/#{task.id}", method: :delete, remote: true

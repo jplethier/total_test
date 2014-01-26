@@ -8,4 +8,15 @@ class Task < ActiveRecord::Base
   def is_done?
     self.done
   end
+
+  def self.order_by(field)
+    case field
+    when 'name'
+      order('name')
+    when 'priority'
+      order('priority')
+    else
+      order('due_date')
+    end
+  end
 end

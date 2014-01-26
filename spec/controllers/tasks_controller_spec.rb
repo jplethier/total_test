@@ -11,15 +11,48 @@ describe TasksController do
       Task.stub(accessible_by: [task])
     end
 
-    it 'assigns all user tasks' do
-      get :index
-      expect(assigns :tasks).to eq [task]
+    context 'html' do
+      it 'assigns all user tasks' do
+        get :index
+        expect(assigns :tasks).to eq [task]
+      end
+
+      it 'assigns a new user task' do
+        user.stub_chain(:tasks, :build).and_return(task)
+        get :index
+        expect(assigns :new_task).to eq task
+      end
     end
 
-    it 'assigns a new user task' do
-      user.stub_chain(:tasks, :build).and_return(task)
-      get :index
-      expect(assigns :new_task).to eq task
+    context 'xhr' do
+      let(:task2) { stub_model(Task) }
+
+      before do
+        Task.stub(accessible_by: Task)
+        Task.stub(:order_by).with('due_date').and_return([task,task2])
+        Task.stub(:order_by).with(nil).and_return([task,task2])
+        Task.stub(:order_by).with('priority').and_return([task2,task])
+      end
+
+      it 'order by due_date' do
+        xhr :get, :index, { order_by: 'due_date' }
+        expect(assigns :tasks).to eq [task,task2]
+      end
+
+      it 'order by priority' do
+        xhr :get, :index, { order_by: 'priority' }
+        expect(assigns :tasks).to eq [task2,task]
+      end
+
+      it 'without params' do
+        xhr :get, :index
+        expect(assigns :tasks).to eq [task,task2]
+      end
+
+      it 'renders index' do
+        xhr :get, :index
+        expect(response).to render_template :index
+      end
     end
   end
 

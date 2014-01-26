@@ -6,7 +6,11 @@ class TasksController < ApplicationController
   end
 
   def index
-    @new_task = current_user.tasks.build
+    if request.xhr?
+      @tasks = @tasks.order_by(params[:order_by])
+    else
+      @new_task = current_user.tasks.build
+    end
   end
 
   def create
