@@ -15,4 +15,9 @@
       = f.text_field :due_date
 
     .field
+      = f.label :priority
+      %br
+      = f.select :priority, (1..10).to_a
+
+    .field
       = f.submit 'Add', class: 'confirm'
