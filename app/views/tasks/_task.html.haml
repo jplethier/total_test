@@ -1,4 +1,6 @@
 %li{ id: "task-#{task.id}" }
   %span.priority= "Priority: #{task.priority}"
+  %span.due_date= "Due Date: #{l task.due_date}"
+  %br
   = task.name
   = link_to '', "/tasks/#{task.id}", method: :delete, remote: true, class: 'destroy fa fa-times'
