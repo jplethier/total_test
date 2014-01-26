@@ -7,5 +7,19 @@ ul.tasks {
 
   li {
     list-style: none;
+
+    a.destroy {
+      display: none;
+    }
+
+    a.destroy:hover {
+      text-decoration: none;
+    }
+  }
+
+  li:hover {
+    a.destroy {
+      display: inline;
+    }
   }
 }
