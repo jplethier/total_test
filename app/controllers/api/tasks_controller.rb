@@ -46,6 +46,7 @@ class Api::TasksController < Api::ApplicationController
   private
 
   def task_params
+    params[:task] = eval(params[:task])
     params.require(:task).permit(:name, :due_date, :priority)
   end
 
