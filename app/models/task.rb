@@ -14,7 +14,7 @@ class Task < ActiveRecord::Base
     when 'name'
       order('name')
     when 'priority'
-      order('priority')
+      order('priority DESC')
     else
       order('due_date')
     end

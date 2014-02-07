@@ -1,9 +1,9 @@
-$('ul.tasks li a.edit').click(function(){
+$('body').on('click', 'ul.tasks li a.edit', function(){
   $(this).parent().find('.input').show()
   $(this).parent().find('.label').hide()
 })
 
-$('ul.tasks li a.cancel').click(function(){
+$('body').on('click', 'ul.tasks li a.cancel', function(){
   $(this).parents().find('li').find('.input').hide()
   $(this).parents().find('li').find('.label').show()
 })
